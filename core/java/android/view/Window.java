@@ -17,7 +17,6 @@
 package android.view;
 
 import static android.view.WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED;
-import static android.view.WindowManager.LayoutParams.FLAG_SECURE;
 
 import android.annotation.ColorInt;
 import android.annotation.DrawableRes;
@@ -46,7 +45,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.provider.Settings;
 import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionManager;
@@ -1193,7 +1191,6 @@ public abstract class Window {
      * @see #clearFlags
      */
     public void setFlags(int flags, int mask) {
-        mask &= ~FLAG_SECURE;
         final WindowManager.LayoutParams attrs = getAttributes();
         attrs.flags = (attrs.flags&~mask) | (flags&mask);
         mForcedWindowFlags |= mask;
